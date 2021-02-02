@@ -57,3 +57,15 @@ runmode = prod
 EOF
 sudo systemctl start beego
 ```
+
+## Enable optional tracing
+
+The app collects traces in AWS X-Ray format
+and sends them to the tracing daemon at UDP/localhost:2000.
+
+Make sure [the `xray` daemon is running](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-sendingdata.html)
+and [the `AWSXRayDaemonWriteAccess` IAM role](https://docs.aws.amazon.com/xray/latest/devguide/security_iam_service-with-iam.html)
+is assigned to your compute.
+
+To see the traces, switch to [the x-ray web console](https://us-west-1.console.aws.amazon.com/xray/home?region=us-west-1#/service-map?timeRange=PT30M).
+Then, choose the right region in the top right corner.
